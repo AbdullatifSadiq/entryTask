@@ -22,7 +22,11 @@ function App() {
     <div className='container'>
       <Header />
       <AddContact onAdd={addContact} />
-      <Contacts contacts={contacts} onDelete={deleteContact} />
+      <Contacts
+        contacts={contacts}
+        onDelete={deleteContact}
+        setContact={setContact}
+      />
     </div>
   );
 }

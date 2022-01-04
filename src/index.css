@@ -145,7 +145,7 @@ footer {
   place-items: center;
   transition: var(--transition);
   visibility: hidden;
-  z-index: 1000;
+  z-index: 5;
 }
 
 .show-modal {

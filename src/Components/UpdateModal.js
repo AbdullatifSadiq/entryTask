@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 const UpdateModal = ({ contact, onClose, contacts, setContact, setUpdate }) => {
-  // Update Contact
-  const updateContact = (id) => {
-    const newContact = contacts.filter((contact) => contact.id !== id);
-    setContact([...contacts, newContact]);
-  };
   const [name, setName] = useState(contact.name);
   const [number, setNumber] = useState(contact.number);
+  // Update Contact
+  const updateContact = (id) => {
+    const oldContacts = contacts.filter((contact) => contact.id !== id);
+    const newContact = { id, name, number };
+    setContact([...oldContacts, newContact]);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -18,16 +20,14 @@ const UpdateModal = ({ contact, onClose, contacts, setContact, setUpdate }) => {
       alert('Please add a contact');
       return;
     }
-    updateContact({ name, number });
-
-    setName('');
-    setNumber('');
+    updateContact(contact.id);
+    setUpdate(false);
   };
 
   return (
     <div className='modal-container-1'>
       <FaTimes className='close-modal-btn' onClick={onClose} />
-      <form className='add-form' onSubmit={onSubmit}>
+      <form className='add-form'>
         <div className='form-control'>
           <label> Name</label>
           <input
@@ -50,12 +50,13 @@ const UpdateModal = ({ contact, onClose, contacts, setContact, setUpdate }) => {
             }}
           />
         </div>
-        <input
+        <button
           type='submit'
-          value='Save Contact'
           className='btn btn-block'
-          onClick={updateContact}
-        />
+          onClick={(e) => onSubmit(e)}
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

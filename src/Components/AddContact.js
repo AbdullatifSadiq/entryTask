@@ -25,7 +25,7 @@ const AddContact = ({ onAdd }) => {
           <label> Name</label>
           <input
             type='text'
-            placeholder='Enter Your Name'
+            placeholder='Enter a Name'
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -36,7 +36,7 @@ const AddContact = ({ onAdd }) => {
           <label> Number</label>
           <input
             type='text'
-            placeholder='Enter Your Number'
+            placeholder='Enter a Number'
             value={number}
             onChange={(e) => {
               setNumber(e.target.value);

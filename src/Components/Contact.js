@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Modal from './Modal';
 import UpdateModal from './UpdateModal';
 
-const Contact = ({ contact, onDelete }) => {
+const Contact = ({ contact, onDelete, contacts, setContact }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [update, setUpdate] = useState(false);
 
@@ -26,7 +26,13 @@ const Contact = ({ contact, onDelete }) => {
         <Modal contact={contact} onClose={() => setIsModalOpen(false)} />
       )}
       {update && (
-        <UpdateModal contact={contact} onClose={() => setUpdate(false)} />
+        <UpdateModal
+          contact={contact}
+          onClose={() => setUpdate(false)}
+          contacts={contacts}
+          setContact={setContact}
+          setUpdate={setUpdate}
+        />
       )}
     </>
   );
